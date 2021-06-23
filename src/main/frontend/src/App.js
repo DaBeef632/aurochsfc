@@ -1,5 +1,7 @@
-import logo from './logo.svg';
+//import logo from './public/aurochslogo.png';
+import React from "react";
 import './App.css';
+
 import {
   GoogleMap,
   useLoadScript,
@@ -24,6 +26,11 @@ import "@reach/combobox/styles.css";
 
 import mapStyles from "./mapStyles";
 
+
+
+
+
+
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100vw",
@@ -41,7 +48,8 @@ const options = {
 };
 
 
-export default function App() {
+export default function App()  {
+
   const { isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     libraries,
@@ -77,9 +85,8 @@ export default function App() {
   return (
     <div>
       <h1>
-        Aurochs{"  "}
         <span role="img" aria-label="tent">
-
+           <img src="logo-full.png" alt="home"/>
         </span>
       </h1>
 
@@ -145,7 +152,7 @@ function Locate({panTo}) {
       );
   }}
   >
-    <img src="logo512.png" alt="compass - locate me"/>
+    <img src="" alt="compass - locate me"/>
   </button>
   );
 
