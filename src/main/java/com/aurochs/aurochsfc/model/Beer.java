@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Entity(name = "Beer")
 @Table(name = "beer")
 public class Beer implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "beer_id", nullable = false, updatable = false)

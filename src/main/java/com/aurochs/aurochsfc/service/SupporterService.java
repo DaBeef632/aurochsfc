@@ -4,9 +4,11 @@ import com.aurochs.aurochsfc.exception.SupporterNotFoundException;
 import com.aurochs.aurochsfc.model.Supporter;
 import com.aurochs.aurochsfc.repository.SupporterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SupporterService {
     private  final SupporterRepository supporterRepository;
 

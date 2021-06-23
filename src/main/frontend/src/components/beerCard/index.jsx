@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Marginer } from "../marginer";
 
 const CardContainer = styled.div`
   display: flex;
@@ -46,8 +47,16 @@ border-top: 1px solid rgba(15, 15, 15, 0.19);
 padding: 0 10 px;
 `;
 
+const Title = styled.h2`
+  font-size: 24px;
+  margin: 0;
+  font-weight: 500;
+  color:
+`;
+
+
 export function BeerCard(props){
-  const { thumb}
+  const { thumb} = props;
 
   return <CardContainer>
     <TopContainer>
@@ -55,5 +64,9 @@ export function BeerCard(props){
 
       </ServiceThumbnail>
     </TopContainer>
+    <ContentContainer>
+    <Title>{title}</Title>
+    <Marginer direction="vertical" margin={10}/>
+    </ContentContainer>
   </CardContainer>
 }
