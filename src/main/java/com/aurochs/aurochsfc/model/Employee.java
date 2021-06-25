@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,23 +22,25 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String jobTitle;
-    private String phone;
-    private String imageUrl; //hold the location to show the file
-    @Column(nullable = false, updatable = false)
-    private String employeeCode;
 
+    public Employee(String email, String firstName, String lastName) {
+    }
+    @OneToMany(
+            mappedBy = "employee",
+            orphanRemoval = true,
+            cascade = CascadeType.ALL
+    )
+    private List<Beer> beers = new ArrayList<>();
     @Override
     public String toString(){
         return "Employee{" +
                 "id=" + id +
-                ", name ='" + name + '\'' +
+                ", firsName ='" + firstName + '\'' +
+                ", lastName ='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", jobTitle='" + jobTitle + '\'' +
-                ", phone='" + phone + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }

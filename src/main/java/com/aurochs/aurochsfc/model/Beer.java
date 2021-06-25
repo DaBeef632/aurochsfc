@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -26,13 +27,26 @@ public class Beer implements Serializable {
     private String beerType;
     @ManyToOne
     @JoinColumn(
-            name = "supporter_id",
-            referencedColumnName = "supporter_id",
+            name = "id",
+            referencedColumnName = "id",
             foreignKey = @ForeignKey(
-                    name = "beer_id_fk"
+                    name = "employee_id_fk"
             )
     )
-    private  Supporter supporter;
+    private  Employee employee;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Beer beer = (Beer) o;
+        return Objects.equals(beerId, beer.beerId) && Objects.equals(beerName, beer.beerName) && Objects.equals(beerType, beer.beerType) && Objects.equals(employee, beer.employee);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(beerId, beerName, beerType, employee);
+    }
 
     @Override
     public String toString() {
@@ -40,7 +54,7 @@ public class Beer implements Serializable {
                 "beerId=" + beerId +
                 ", beerName='" + beerName + '\'' +
                 ", beerType='" + beerType + '\'' +
-                ", supporter=" + supporter +
+                ", supporter=" + employee +
                 '}';
     }
 }

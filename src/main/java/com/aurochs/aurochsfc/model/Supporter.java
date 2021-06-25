@@ -24,14 +24,18 @@ public class Supporter implements Serializable {
             updatable = false,
             name = "supporter_id")
     private Long id;
-    private String name;
+
+    @Column(name = "first_name",
+    nullable = false)
+    private String firstName;
+    @Column(name = "last_name",
+    nullable = false)
+    private String lastName;
+    @Column(name = "email",
+    nullable = false)
     private String email;
-    private String streetAddress;
-    private String city;
-    private String phone;
-    private String imageUrl;
     @OneToMany(
-            mappedBy = "supporter",
+            mappedBy = "employee",
             orphanRemoval = true,
             cascade = CascadeType.ALL
     )
@@ -51,12 +55,9 @@ public class Supporter implements Serializable {
     public String toString(){
         return "Supporter{" +
                 "id=" + id +
-                ", name ='" + name + '\'' +
+                ", firstName ='" + firstName + '\'' +
+                ", lastName ='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", streetAddress='" + streetAddress + '\'' +
-                ", city='" + city + '\'' +
-                ", phone='" + phone + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }
