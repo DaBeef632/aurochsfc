@@ -8,10 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("http://localhost:3000/")
 @RestController
 @RequestMapping("/employee")
-@CrossOrigin("http://localhost:3000/")
 public class EmployeeController {
     private final EmployeeService employeeService;
 
