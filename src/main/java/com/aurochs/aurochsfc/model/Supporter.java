@@ -34,12 +34,12 @@ public class Supporter implements Serializable {
     @Column(name = "email",
     nullable = false)
     private String email;
-    @OneToMany(
-            mappedBy = "employee",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL
-    )
-    private List<Beer> beers = new ArrayList<>();
+//    @OneToMany(
+//            mappedBy = "employee",
+//            orphanRemoval = true,
+//            cascade = CascadeType.ALL
+//    )
+//    private List<Beer> beers = new ArrayList<>();
 
 
 //    @ManyToOne

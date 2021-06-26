@@ -25,27 +25,28 @@ public class Beer implements Serializable {
     private String beerName;
     @Column(name = "beer_type")
     private String beerType;
-    @ManyToOne
-    @JoinColumn(
-            name = "id",
-            referencedColumnName = "id",
-            foreignKey = @ForeignKey(
-                    name = "employee_id_fk"
-            )
-    )
-    private  Employee employee;
+//    @ManyToOne
+//    @JoinColumn(
+//            name = "id",
+//            referencedColumnName = "id",
+//            foreignKey = @ForeignKey(
+//                    name = "employee_id_fk"
+//            )
+//    )
+//    private  Employee employee;
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Beer beer = (Beer) o;
-        return Objects.equals(beerId, beer.beerId) && Objects.equals(beerName, beer.beerName) && Objects.equals(beerType, beer.beerType) && Objects.equals(employee, beer.employee);
+        return beerId.equals(beer.beerId) && beerName.equals(beer.beerName) && beerType.equals(beer.beerType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(beerId, beerName, beerType, employee);
+        return Objects.hash(beerId, beerName, beerType);
     }
 
     @Override
@@ -54,7 +55,7 @@ public class Beer implements Serializable {
                 "beerId=" + beerId +
                 ", beerName='" + beerName + '\'' +
                 ", beerType='" + beerType + '\'' +
-                ", supporter=" + employee +
                 '}';
     }
 }
+
