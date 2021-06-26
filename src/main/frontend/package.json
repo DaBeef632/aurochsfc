@@ -20,6 +20,7 @@
     "react": "^17.0.2",
     "react-admin": "^3.16.3",
     "react-dom": "^17.0.2",
+    "react-dropzone": "^11.3.4",
     "react-favicon": "0.0.23",
     "react-google-maps": "^9.4.5",
     "react-responsive": "^8.2.0",
