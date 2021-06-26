@@ -25,12 +25,13 @@ import {
 import "@reach/combobox/styles.css";
 
 import mapStyles from "./mapStyles";
-import { useState } from "react";
 
 
 
 
 
+
+const libraries = ["places"];
 const mapContainerStyle = {
   width: "100vw",
   height: "100vh",
@@ -48,9 +49,9 @@ const options = {
 
 
 function Map()  {
-const [libraries] = useState(["places"]);
+
   const { isLoaded, loadError} = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+    googleMapsApiKey: env.REACT_APP_GOOGLE_KEY,
     libraries,
   });
 
