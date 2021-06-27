@@ -5,6 +5,7 @@ import com.aurochs.aurochsfc.model.Employee;
 import com.aurochs.aurochsfc.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Employee employee){
+
         return employeeRepository.save(employee);
     }
 
@@ -38,4 +40,6 @@ public class EmployeeService {
     public Employee findEmployeeById(Long id){
         return employeeRepository.findEmployeeById(id).orElseThrow(()-> new UserNotFoundException("User by id " + id + " was not found"));
     }
+
+
 }

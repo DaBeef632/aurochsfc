@@ -7,9 +7,9 @@ class UpdateEmployeeComponent extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            emailId: '',
             firstName: '',
-            lastName: ''
+            lastName: '',
+            emailId: ''
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -19,16 +19,16 @@ class UpdateEmployeeComponent extends Component {
     componentDidMount(){
         EmployeeService.getEmployeeById(this.state.id).then( (res) =>{
             let employee = res.data;
-            this.setState({emailId : employee.emailId,
-                firstName: employee.firstName,
-                lastName: employee.lastName
+            this.setState({firstName: employee.firstName,
+                lastName: employee.lastName,
+                email : employee.email
             });
         });
     }
 
     updateEmployee = (e) => {
         e.preventDefault();
-        let employee = {emailId: this.state.emailId, firstName: this.state.firstName, lastName: this.state.lastName};
+        let employee = {firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email};
         console.log('employee => ' + JSON.stringify(employee));
         console.log('id => ' + JSON.stringify(this.state.id));
         EmployeeService.updateEmployee(employee, this.state.id).then( res => {
@@ -36,15 +36,16 @@ class UpdateEmployeeComponent extends Component {
         });
     }
 
-    changeEmailHandler= (event) => {
-        this.setState({emailId: event.target.value});
-    }
     changeFirstNameHandler= (event) => {
         this.setState({firstName: event.target.value});
     }
 
     changeLastNameHandler= (event) => {
         this.setState({lastName: event.target.value});
+    }
+
+    changeEmailHandler= (event) => {
+        this.setState({email: event.target.value});
     }
 
     cancel(){
@@ -62,11 +63,6 @@ class UpdateEmployeeComponent extends Component {
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
-                                            <label> EmailId: </label>
-                                            <input placeholder="Email Address" name="emailId" className="form-control"
-                                                   value={this.state.emailId} onChange={this.changeEmailHandler}/>
-                                        </div>
-                                        <div className = "form-group">
                                             <label> First Name: </label>
                                             <input placeholder="First Name" name="firstName" className="form-control"
                                                 value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
@@ -75,6 +71,11 @@ class UpdateEmployeeComponent extends Component {
                                             <label> Last Name: </label>
                                             <input placeholder="Last Name" name="lastName" className="form-control"
                                                 value={this.state.lastName} onChange={this.changeLastNameHandler}/>
+                                        </div>
+                                        <div className = "form-group">
+                                            <label> Email: </label>
+                                            <input placeholder="Email Address" name="email" className="form-control"
+                                                value={this.state.email} onChange={this.changeEmailHandler}/>
                                         </div>
 
                                         <button className="btn btn-success" onClick={this.updateEmployee}>Save</button>

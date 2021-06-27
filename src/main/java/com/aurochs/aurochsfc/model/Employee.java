@@ -22,11 +22,14 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
+    @Column(name = "first_Name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
-    private String email;
+    @Column(name = "email_id")
+    private String emailId;
 
-    public Employee(String email, String firstName, String lastName) {
+    public Employee(String firstName, String lastName, String email) {
     }
 //    @OneToMany(
 //            mappedBy = "employee",
@@ -40,7 +43,7 @@ public class Employee implements Serializable {
                 "id=" + id +
                 ", firsName ='" + firstName + '\'' +
                 ", lastName ='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", emailId='" + emailId + '\'' +
                 '}';
     }
 }
