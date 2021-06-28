@@ -20,7 +20,7 @@ class SupporterService {
         return axios.put(SUPPORTER_API_BASE_URL + '/' + supporterId, supporter);
     }
 
-    deleteEmployee(supporterId){
+    deleteSupporter(supporterId){
         return axios.delete(SUPPORTER_API_BASE_URL + '/' + supporterId);
     }
 }

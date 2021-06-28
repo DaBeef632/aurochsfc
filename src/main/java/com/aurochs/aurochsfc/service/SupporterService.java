@@ -1,6 +1,8 @@
 package com.aurochs.aurochsfc.service;
 
 import com.aurochs.aurochsfc.exception.SupporterNotFoundException;
+import com.aurochs.aurochsfc.exception.UserNotFoundException;
+import com.aurochs.aurochsfc.model.Employee;
 import com.aurochs.aurochsfc.model.Supporter;
 import com.aurochs.aurochsfc.repository.SupporterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +31,16 @@ public class SupporterService {
         return supporterRepository.save(supporter);
     }
 
-    public Supporter findSupporterById(Long id){
-        return supporterRepository.findSupporterById(id).orElseThrow(() -> new SupporterNotFoundException("Supporter by id " + id + " was not found"));
+    public Supporter findBySupporterEmail(String email){
+        return supporterRepository.findSupporterByEmail(email);
     }
 
-    public void deleteSupporter(Long id){
-        supporterRepository.deleteSupporterById(id);
+    public Supporter findSupporterById(Long id){
+        return supporterRepository.findSupporterById(id).orElseThrow(()-> new UserNotFoundException("User by id " + id + " was not found"));
     }
+    public void deleteSupporter(Long supporterId){
+        supporterRepository.deleteSupporterById(supporterId);
+    }
+
+
 }

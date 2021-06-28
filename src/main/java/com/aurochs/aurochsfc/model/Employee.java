@@ -31,12 +31,12 @@ public class Employee implements Serializable {
 
     public Employee(String firstName, String lastName, String email) {
     }
-//    @OneToMany(
-//            mappedBy = "employee",
-//            orphanRemoval = true,
-//            cascade = CascadeType.ALL
-//    )
-//    private List<Beer> beers = new ArrayList<>();
+    @OneToMany(
+            mappedBy = "employee",
+            orphanRemoval = true,
+            cascade = CascadeType.ALL
+    )
+    private List<Beer> beers = new ArrayList<>();
     @Override
     public String toString(){
         return "Employee{" +

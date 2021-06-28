@@ -9,7 +9,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import authProvider from "./components/authorization/authProvider";
 import AdminDash from "./pages/admin";
 import { BrowserRouter as Router, Switer, Route } from "react-router-dom";
-import Map from "./components/map/Map";
+import Map from "./components/map/ClickMap";
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 const App = () => (
   <Router>

@@ -11,7 +11,7 @@
 //
 //import java.io.IOException;
 //import java.io.InputStream;
-//import java.util.Map;
+//import java.util.ClickMap;
 //import java.util.Optional;
 //
 //@Service
@@ -24,7 +24,7 @@
 //        this.s3 = s3;
 //    }
 //
-//    public void save(String path, String fileName, Optional<Map<String, String>> optionalMetadata, InputStream inputStream){
+//    public void save(String path, String fileName, Optional<ClickMap<String, String>> optionalMetadata, InputStream inputStream){
 //        ObjectMetadata metadata = new ObjectMetadata();
 //        optionalMetadata.ifPresent(map -> {
 //            if(!map.isEmpty()){

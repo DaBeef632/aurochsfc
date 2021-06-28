@@ -34,7 +34,7 @@
 //        //3. the user exists in our database
 //           UserProfile user = getUserOrElseThrow(userProfileId);
 //        //4. grab some metadate from file if any
-//        Map<String, String> metadata = new HashMap<>();
+//        ClickMap<String, String> metadata = new HashMap<>();
 //        metadata.put("Content-Type", file.getContentType());
 //        metadata.put("Content-Length", String.valueOf(file.getSize()));
 //        //5. store the image in s3 and update database {userProfileImageLink} with s3 image link

@@ -29,7 +29,11 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Employee employee){
-
+        Employee currentEmployee = employeeRepository.findEmployeeById(employee.getId())
+                .orElseThrow(RuntimeException::new);
+        currentEmployee.setFirstName(employee.getFirstName());
+        currentEmployee.setEmailId(employee.getEmailId());
+        currentEmployee = employeeRepository.save(employee);
         return employeeRepository.save(employee);
     }
 

@@ -7,17 +7,18 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Supporter")
-@Table(name = "supporter")
+@Table(name = "supporter", indexes = {
+        @Index(name = "idx_supporter_supporter_id", columnList = "supporter_id")
+})
 public class Supporter implements Serializable {
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false,
@@ -42,15 +43,18 @@ public class Supporter implements Serializable {
 //    private List<Beer> beers = new ArrayList<>();
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "checkin_checkin_id",
-//                referencedColumnName = "checkin_id",
-//                foreignKey = @ForeignKey(
-//                        name = "checkin_id_fk"
-//    )
-//    )
-//    private CheckIn checkin;
+    @ManyToOne
+    @JoinColumn(name = "checkin_id",
+                referencedColumnName = "checkin_id",
+                foreignKey = @ForeignKey(
+                        name = "checkin_id_fk"
+    )
+    )
+    private Checkin checkin;
 
+
+public Supporter(String firstName, String lastName, String email) {
+}
     @Override
     public String toString(){
         return "Supporter{" +

@@ -1,5 +1,5 @@
 //import logo from './public/aurochslogo.png';
-import React from "react";
+import React, {Component, useEffect} from "react"
 
 
 import {
@@ -26,6 +26,7 @@ import "@reach/combobox/styles.css";
 
 import mapStyles from "./mapStyles";
 import { useState } from "react";
+import './ClickMap.css'
 
 
 
@@ -47,16 +48,24 @@ const options = {
 };
 
 
-function Map()  {
-const [libraries] = useState(["places"]);
+export default function ClickMap()  {
+const [libraries] = useState(["places", "localContext"]);
   const { isLoaded, loadError} = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+    googleMapsApiKey:"AIzaSyDTSHzRpOWS9o1u1NIzNwe9fYYXzcqIYlg",
     libraries,
   });
 
   const [markers, setMarkers] = React.useState([]);
   const[selected, setSelected] = React.useState(null);
-
+  // useEffect( => {
+  //   const  fetchEvents = async () => {
+  //     setLoading(true)
+  //     const res = await fetch('https://data.wprdc.org/datastore/odata3.0/112a3821-334d-4f3f-ab40-4de1220b1a0a')
+  //     const { events } = await res.json()
+  //     setEventData(events)
+  //     setLoading(false)
+  //   }
+  // }, [])
   const onMapClick = React.useCallback((event)=>{
     setMarkers((current) => [
           ...current,
@@ -80,6 +89,7 @@ const [libraries] = useState(["places"]);
 
   if(loadError) return "Error loading maps";
   if(!isLoaded) return "Loading Maps";
+
 
   return (
     <div>
@@ -211,4 +221,3 @@ function Search({ panTo }) {
   </div>
   );
 }
-export default Map

@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-@RequestMapping("/beer")
+@RequestMapping("/api/v1/")
 public class BeerController {
 
     private final BeerService beerService;
@@ -20,13 +20,13 @@ public class BeerController {
         this.beerService = beerService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/beers")
     public ResponseEntity<List<Beer>> getAllBeer() {
         List<Beer> beers = beerService.findAllBeers();
         return new ResponseEntity<>(beers, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{beerId}")
+    @GetMapping("/beers/{beerId}")
     public ResponseEntity<Beer> getBeerById(@PathVariable("beerId") Long beerId) {
         Beer beer = beerService.findBeerById(beerId);
         return new ResponseEntity<>(beer, HttpStatus.OK);
@@ -38,20 +38,20 @@ public class BeerController {
 //        return new ResponseEntity<>(beer, HttpStatus.OK);
 //    }
 
-    @PostMapping("/add")
+    @PostMapping("/beers")
     public ResponseEntity<Beer> addBeer(@RequestBody Beer beer) {
         Beer newBeer = beerService.addBeer(beer);
         return new ResponseEntity<>(newBeer, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/beers/{beerId}")
     public ResponseEntity<Beer> updateBeer(@RequestBody Beer beer) {
         Beer updateBeer = beerService.updateBeer(beer);
         return new ResponseEntity<>(updateBeer, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Beer> deleteBeer(@PathVariable("id") Long beerId) {
+    @DeleteMapping("/beers/{beerId}")
+    public ResponseEntity<Beer> deleteBeer(@PathVariable("beerId") Long beerId) {
         beerService.deleteBeer(beerId);
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -7,7 +7,7 @@ import { Component } from "react";
 import MainPage from "./pages";
 import PageNotFound from "./pages/404";
 import BeersPage from "./pages/beers";
-import checkinMap from "./pages/Map";
+import checkinMap from "./pages/ClickMap";
 class App extends Component {
   render() {
   return (

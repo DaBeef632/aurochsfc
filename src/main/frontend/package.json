@@ -61,6 +61,8 @@
     ]
   },
   "devDependencies": {
-    "@types/googlemaps": "^3.43.3"
+    "@types/googlemaps": "^3.43.3",
+    "react-geocode": "^0.2.3",
+    "react-google-autocomplete": "^2.4.0"
   }
 }

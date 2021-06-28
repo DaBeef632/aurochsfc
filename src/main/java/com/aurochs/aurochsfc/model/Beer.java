@@ -25,15 +25,15 @@ public class Beer implements Serializable {
     private String beerName;
     @Column(name = "beer_type")
     private String beerType;
-//    @ManyToOne
-//    @JoinColumn(
-//            name = "id",
-//            referencedColumnName = "id",
-//            foreignKey = @ForeignKey(
-//                    name = "employee_id_fk"
-//            )
-//    )
-//    private  Employee employee;
+    @ManyToOne
+    @JoinColumn(
+            name = "id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(
+                    name = "employee_id_fk"
+            )
+    )
+    private  Employee employee;
 
 
     @Override

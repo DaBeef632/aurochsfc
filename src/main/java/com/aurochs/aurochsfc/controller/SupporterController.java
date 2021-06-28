@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
-@RequestMapping("/supporter")
+@RequestMapping("/api/v1/")
 public class SupporterController {
     private final SupporterService supporterService;
 
@@ -18,31 +19,31 @@ public class SupporterController {
         this.supporterService = supporterService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/supporters")
     public ResponseEntity<List<Supporter>> getAllSupporters(){
-        List<Supporter> rocks = supporterService.findAllSupporters();
-        return new ResponseEntity<>(rocks, HttpStatus.OK);
+        List<Supporter> supporters = supporterService.findAllSupporters();
+        return new ResponseEntity<>(supporters, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<Supporter> getSupporterById(@PathVariable("supporterId") Long supporterId){
-        Supporter rock = supporterService.findSupporterById(supporterId);
-        return new ResponseEntity<>(rock, HttpStatus.OK);
+    @GetMapping("/supporters/{id}")
+    public ResponseEntity<Supporter> getSupporterById(@PathVariable("id") Long id){
+        Supporter supporter = supporterService.findSupporterById(id);
+        return new ResponseEntity<>(supporter, HttpStatus.OK);
     }
 
 
-    @PostMapping("/add")
+    @PostMapping("/supporters")
     public ResponseEntity<Supporter> addSupporter(@RequestBody Supporter supporter){
         Supporter newSupporter = supporterService.addSupporter(supporter);
         return new ResponseEntity<>(newSupporter, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Supporter> updateBeer(@RequestBody Supporter supporter){
+    @PutMapping("/supporters/{supporterId}")
+    public ResponseEntity<Supporter> updateSupporter(@RequestBody Supporter supporter){
         Supporter updateSupporter = supporterService.updateSupporter(supporter);
         return new ResponseEntity<>(updateSupporter, HttpStatus.OK);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/supporters/{supporterId}")
     public ResponseEntity<Supporter> deleteSupporter(@PathVariable("supporterId") Long supporterId){
         supporterService.deleteSupporter(supporterId);
         return new ResponseEntity<>(HttpStatus.OK);

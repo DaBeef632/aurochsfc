@@ -12,7 +12,7 @@ import CheckinPage from "./pages/checkin";
 import SupporterPage from "./pages/supporter";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Admin from "./pages/admin";
-import Map from "./components/Map/Map";
+import Map from "./components/Map/ClickMap";
 class App extends Component {
   render() {
   return (
